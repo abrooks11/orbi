@@ -4,6 +4,12 @@
 // OPENCAGE API FOR GEOHASH CODES
 // https://opencagedata.com/
 
+
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   //   const currentLocation = navigator.geolocation.getCurrentPosition(
   //     (position) => {
