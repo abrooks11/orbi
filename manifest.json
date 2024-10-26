@@ -1,10 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "Hello Extensions",
-  "description": "Base Level Extension",
+  "name": "Orbi",
+  "description": "An extension to display the color palatte of the active tab",
   "version": "1.0",
+  "background": {
+    "service_worker": "background.js"
+  },
   "action": {
-    "default_popup": "hello.html",
-    "default_icon": "hello_extensions.png"
-  }
+    "default_icon": "images/icon-11.png"
+  },
+  "permissions": ["scripting", "tabs", "activeTab"]
 }

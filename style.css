@@ -2,3 +2,9 @@
   margin: 10px 0;
   list-style-type: none;
 }
+
+.colors {
+  background-color: yellow;
+  width: 100%;
+  height: 50px;
+}
