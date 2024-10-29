@@ -21,6 +21,7 @@ const getElementColors = () => {
 
   // MAPS TO STORE UNIQUE COLORS
   const uniqueColors = new Map();
+  const accessoryColors = new Map();
 
   // ITERATE THROUGH ALL DOM ELEMENTS AND MAKE MAP OF UNIQUE COLORS FROM RELEVANT HTML TAGS
   const makeColorMap = document.querySelectorAll("*").forEach((element) => {
@@ -29,9 +30,9 @@ const getElementColors = () => {
       const style = window.getComputedStyle(element, "");
       const backgroundColor = style.getPropertyValue("background-color");
       const borderColor = style.getPropertyValue("border-top-color");
-      console.log(style);
+      // console.log(style);
       uniqueColors.set(backgroundColor, backgroundColor);
-      uniqueColors.set(borderColor, borderColor);
+      accessoryColors.set(borderColor, borderColor);
     }
   });
   console.log("uniqueColors", uniqueColors);
@@ -78,5 +79,3 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     sendResponse({ colors });
   }
 });
-
-// https://www.permadi.com/tutorial/cssGettingBackgroundColor/index.html
