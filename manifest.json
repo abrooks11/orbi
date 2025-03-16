@@ -1,11 +1,24 @@
 {
   "manifest_version": 3,
   "name": "Orbi",
-  "description": "An extension to display the color palatte of the active tab",
+  "description": "An extension to display the color palette of the active tab. Easily extract and view color codes from any webpage.",
   "version": "1.0",
+  "author": "abrooks11",
+  "icons": {
+    "16": "images/icon-16.png",
+    "32": "images/icon-32.png",
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png"
+  },
   "action": {
     "default_popup": "popup.html",
-    "default_icon": "images/icon-11.png"
+    "default_icon": {
+      "16": "images/icon-16.png",
+      "32": "images/icon-32.png",
+      "48": "images/icon-48.png",
+      "128": "images/icon-128.png"
+    },
+    "default_title": "Orbi - Color Palette Extractor"
   },
   "background": {
     "service_worker": "background.js",
@@ -14,14 +27,24 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "css": ["style.css"]
+      "css": ["style.css"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
     }
   ],
   "permissions": [
     "activeTab",
-    "nativeMessaging",
-    "storage",
     "scripting",
-    "tabs"
+    "storage",
+    "tabs",
+    "clipboardWrite"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "minimum_chrome_version": "88",
+  "web_accessible_resources": [
+    {
+      "resources": ["images/*"],
+      "matches": ["<all_urls>"]
+    }
   ]
 }
