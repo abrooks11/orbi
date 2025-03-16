@@ -1,4 +1,4 @@
-console.log("background.js running");
+// console.log("background.js running");
 
 let colorCodes = null;
 // LISTEN FOR DATA FROM CONTENT.JS
@@ -6,9 +6,9 @@ let colorCodes = null;
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "sendColorCodes") {
     colorCodes = message.data;
-    console.log("data recieved from content.js ", colorCodes);
+    // console.log("data recieved from content.js ", colorCodes);
   } else if (message.action === "getColoCodes") {
-    console.log("data sent from background to popup.js:", colorCodes);
+    // console.log("data sent from background to popup.js:", colorCodes);
     sendResponse({
       data: colorCodes,
     });

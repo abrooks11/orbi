@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const response = await chrome.runtime.sendMessage({
       action: "getColoCodes",
     });
-    console.log("data received from background ", response.data);
+    // console.log("data received from background ", response.data);
 
     const palette = document.querySelector("#color-container");
     let colorCodes = response.data;
@@ -28,6 +28,20 @@ document.addEventListener("DOMContentLoaded", async () => {
       const code = document.createElement("div");
       code.setAttribute("class", "code");
       code.innerText = colorCode;
+
+      // Add click handler for copying
+      orbContainer.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(colorCode);
+          // Show feedback
+          code.textContent = "Copied!";
+          setTimeout(() => {
+            code.textContent = colorCode;
+          }, 1000);
+        } catch (err) {
+          console.error("Failed to copy:", err);
+        }
+      });
 
       orbContainer.append(orb, code);
       palette.append(orbContainer);
