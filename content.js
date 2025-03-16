@@ -37,54 +37,14 @@ const getElementColors = () => {
   });
   // console.log("uniqueColorsMap", uniqueColors);
 
-  // const colorContainer = document.createElement("div");
-  // colorContainer.setAttribute("id", "color-container");
-  // colorContainer.style.padding = "10px";
-  // colorContainer.style.display = "flex";
-  // colorContainer.style.justifyContent = "center";
-  // colorContainer.style.gap = "20px";
-
-  // Array.from(uniqueColors.values()).forEach((color) => {
-  //   const orbContainer = document.createElement("div");
-  //   orbContainer.setAttribute("class", "orb-wrapper");
-  //   orbContainer.style.display = "flex";
-  //   orbContainer.style.flexDirection = "column";
-  //   orbContainer.style.alignItems = "center";
-
-  //   const orb = document.createElement("div");
-  //   orb.setAttribute("class", "orb");
-  //   orb.style.height = "50px";
-  //   orb.style.width = "50px";
-  //   orb.style.border = "1px solid #ccc";
-  //   orb.style.borderRadius = "50%";
-  //   orb.style.backgroundColor = color;
-
-  //   const colorCode = document.createElement("div");
-  //   colorCode.style.fontSize = "0.8rem";
-  //   colorCode.innerText = color;
-
-  //   orbContainer.append(orb, colorCode);
-  //   colorContainer.prepend(orbContainer);
-  // });
-
-  // document.body.prepend(colorContainer);
-
   return Array.from(uniqueColors.values());
 };
 
 let colorCodes = getElementColors();
 console.log("data sent from content.js to background.js ", colorCodes);
 
-// Send color code data to the background script
+// SEND COLOR CODES TO THE BACKGROUND SCRIPT
 chrome.runtime.sendMessage({
   action: "sendColorCodes",
   data: colorCodes,
 });
-
-// // Send the collected colors back
-// chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-//   if (message.action === "getColors") {
-//     const colors = getElementColors();
-//     sendResponse({ colors });
-//   }
-// });

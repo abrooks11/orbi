@@ -14,19 +14,3 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     });
   }
 });
-// When the user clicks on the extension action
-// chrome.action.onClicked.addListener((tab) => {
-//   console.log("extension icon clicked", tab);
-//   console.log("injecting content.js . . . ");
-//   chrome.scripting.executeScript(
-//     {
-//       target: { tabId: tab.id },
-//       files: ["content.js"],
-//     }
-// ,
-// () => {
-//   // After the content script runs, query for the colors
-//   chrome.tabs.sendMessage(tab.id, { action: "getColors" });
-// }
-//   );
-// });

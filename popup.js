@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const response = await chrome.runtime.sendMessage({
       action: "getColoCodes",
     });
-    console.log("data recieved from background ", response.data);
+    console.log("data received from background ", response.data);
 
     const palette = document.querySelector("#color-container");
     let colorCodes = response.data;
