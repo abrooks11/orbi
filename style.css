@@ -1,8 +1,34 @@
-#color-container {
-  display: inline-flex;
+/* Reset default margins and ensure full height */
+#main-wrapper {
+  margin: 0;
+  padding: 10px;
+  display: flex;
   justify-content: center;
-  gap: 30px;
-  padding: 10px 20px;
+  align-items: center;
+  background-color: #f5f5f5;
+  width: 600px;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+#color-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+  /* Prevent ugly scroll appearance */
+  scrollbar-width: thin;
+  /* Ensure content is properly padded when scrolling */
+  scroll-padding: 0 20px;
+  /* Prevent content from being cut off */
+  scroll-padding-left: 20px;
 }
 
 .orb-wrapper {
@@ -11,6 +37,10 @@
   align-items: center;
   cursor: pointer;
   transition: transform 0.2s ease;
+  padding: 8px;
+  width: 100px;
+  /* Prevent shrinking in flex container */
+  flex-shrink: 0;
 }
 
 .orb-wrapper:hover {
@@ -22,10 +52,13 @@
   width: 50px;
   border: 1px solid #ccc;
   border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .code {
   font-size: 0.5rem;
-  margin-top: 5px;
+  margin-top: 8px;
   user-select: none;
+  color: #666;
+  font-family: monospace;
 }
