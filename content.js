@@ -1,5 +1,58 @@
 // Initialize content script
-// console.log("content.js running");
+console.log("content.js running");
+
+/**
+ * Converts RGB color to HSL color space
+ * @param {number} r - Red value (0-255)
+ * @param {number} g - Green value (0-255)
+ * @param {number} b - Blue value (0-255)
+ * @returns {number[]} - [hue, saturation, lightness]
+ */
+const rgbToHsl = (r, g, b) => {
+  r /= 255;
+  g /= 255;
+  b /= 255;
+
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  let h,
+    s,
+    l = (max + min) / 2;
+
+  if (max === min) {
+    h = s = 0; // achromatic (gray)
+  } else {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r:
+        h = (g - b) / d + (g < b ? 6 : 0);
+        break;
+      case g:
+        h = (b - r) / d + 2;
+        break;
+      case b:
+        h = (r - g) / d + 4;
+        break;
+    }
+    h /= 6;
+  }
+
+  return [h * 360, s * 100, l * 100];
+};
+
+/**
+ * Extracts RGB values from a color string
+ * @param {string} color - RGB/RGBA color string
+ * @returns {number[]} - [red, green, blue]
+ */
+const extractRgbValues = (color) => {
+  const match = color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+  return match
+    ? [parseInt(match[1]), parseInt(match[2]), parseInt(match[3])]
+    : [0, 0, 0];
+};
+
 /**
  * Normalizes a color value to RGB format by:
  * 1. Using browser's color parser via a temporary DOM element
@@ -48,6 +101,23 @@ const isValidColor = (color) => {
     color !== "none" &&
     color !== ""
   );
+};
+
+/**
+ * Sorts colors by hue (ROY G BIV order)
+ * @param {string[]} colors - Array of RGB color strings
+ * @returns {string[]} - Sorted array of colors
+ */
+const sortColorsByHue = (colors) => {
+  return colors.sort((a, b) => {
+    const [rA, gA, bA] = extractRgbValues(a);
+    const [rB, gB, bB] = extractRgbValues(b);
+
+    const [hueA] = rgbToHsl(rA, gA, bA);
+    const [hueB] = rgbToHsl(rB, gB, bB);
+
+    return hueB - hueA; // Reverse order to get ROY G BIV (red first)
+  });
 };
 
 /**
@@ -108,8 +178,8 @@ const getElementColors = () => {
     }
   });
 
-  // Convert Map to sorted array for consistent display
-  return Array.from(uniqueColors.values()).sort();
+  // Convert Map to array and sort by hue (ROY G BIV order)
+  return sortColorsByHue(Array.from(uniqueColors.values()));
 };
 
 // Extract colors from current page
