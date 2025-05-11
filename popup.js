@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const brightness = (r * 299 + g * 587 + b * 114) / 1000;
       return brightness < 128; // If less than 128, considered dark
     };
-    
+
  // Create the header with the site title
  const header = document.createElement("div");
  header.setAttribute("class", "header");
@@ -145,6 +145,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       orbContainer.appendChild(orb);
       orbContainer.appendChild(colorInfo);
       palette.appendChild(orbContainer);
+    });
 
           // Add a footer with info and options
     const footer = document.createElement("div");
@@ -165,7 +166,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     footer.appendChild(modeToggle);
     palette.after(footer);
-    });
   } catch (error) {
     console.log("Error ", error);
      // Show error message
