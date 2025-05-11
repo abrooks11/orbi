@@ -31,6 +31,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Clear existing color elements to prevent duplicates
     palette.innerHTML = '';
     
+    // Add grid-view class by default
+    palette.classList.add("grid-view");
+
     let colorCodes = response.data || [];
     
 
@@ -147,25 +150,53 @@ document.addEventListener("DOMContentLoaded", async () => {
       palette.appendChild(orbContainer);
     });
 
-          // Add a footer with info and options
+    // Add a footer with view toggle options
     const footer = document.createElement("div");
     footer.setAttribute("class", "footer");
     
-    const modeToggle = document.createElement("button");
-    modeToggle.setAttribute("class", "mode-toggle");
-    modeToggle.textContent = "Grid View";
-    modeToggle.addEventListener("click", () => {
-      if (palette.classList.contains("grid-view")) {
-        palette.classList.remove("grid-view");
-        modeToggle.textContent = "Grid View";
-      } else {
+    // Create view toggle container
+    const viewToggleContainer = document.createElement("div");
+    viewToggleContainer.setAttribute("class", "view-toggle-container");
+    
+    // Create grid view button (default active)
+    const gridViewBtn = document.createElement("button");
+    gridViewBtn.setAttribute("class", "view-toggle-btn active");
+    gridViewBtn.textContent = "Grid View";
+    
+    // Create list view button
+    const listViewBtn = document.createElement("button");
+    listViewBtn.setAttribute("class", "view-toggle-btn");
+    listViewBtn.textContent = "List View";
+    
+    // Add event listeners for toggling views
+    gridViewBtn.addEventListener("click", () => {
+      if (!gridViewBtn.classList.contains("active")) {
+        // Switch to grid view
         palette.classList.add("grid-view");
-        modeToggle.textContent = "List View";
+        listViewBtn.classList.remove("active");
+        gridViewBtn.classList.add("active");
       }
     });
     
-    footer.appendChild(modeToggle);
+    listViewBtn.addEventListener("click", () => {
+      if (!listViewBtn.classList.contains("active")) {
+        // Switch to list view
+        palette.classList.remove("grid-view");
+        gridViewBtn.classList.remove("active");
+        listViewBtn.classList.add("active");
+      }
+    });
+    
+    // Add buttons to container
+    viewToggleContainer.appendChild(gridViewBtn);
+    viewToggleContainer.appendChild(listViewBtn);
+    
+    // Add view toggle to footer
+    footer.appendChild(viewToggleContainer);
+    
+    // Add footer after the palette
     palette.after(footer);
+    
   } catch (error) {
     console.log("Error ", error);
      // Show error message
