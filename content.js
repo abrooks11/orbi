@@ -1,5 +1,4 @@
 // Initialize content script
-console.log("content.js running");
 
 /**
  * Converts RGB color to HSL color space
@@ -184,7 +183,6 @@ const getElementColors = () => {
 
 // Extract colors from current page
 const colorCodes = getElementColors();
-// console.log("Colors extracted from page:", colorCodes);
 
 // Send extracted colors to background script
 chrome.runtime.sendMessage({

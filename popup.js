@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const response = await chrome.runtime.sendMessage({
       action: "getColoCodes",
     });
-    // console.log("data received from background ", response.data);
 
     const palette = document.querySelector("#color-container");
     let colorCodes = response.data;
@@ -47,6 +46,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       palette.append(orbContainer);
     });
   } catch (error) {
-    console.log("Error ", error);
+    console.error("Error ", error);
   }
 });
