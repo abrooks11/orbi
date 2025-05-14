@@ -54,7 +54,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 - [ ] Add hex and HSL color format support
 - [ ] Export palette to various formats (CSS, JSON, Adobe Swatch)
-- [ ] Color grouping and duplicate detection
 - [ ] Custom color naming
 - [ ] Dark mode support
 
