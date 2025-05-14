@@ -1,59 +1,65 @@
-# Color Palette Chrome Extension
+# Orbi - Color Palette Extractor
 
-## Description
-
-A Chrome extension that helps you extract and display color codes from web pages. This tool makes it easy for designers and developers to identify and collect color information from any website.
+## Overview
+Orbi is a Chrome extension designed to instantly extract and visualize color palettes from any webpage. Whether you're a designer seeking inspiration or a developer analyzing a site's color scheme, Orbi makes capturing color codes effortless.
 
 ## Features
 
-- Extracts color codes from the current web page
-- Displays colors in an easy-to-view palette format
-- Shows both color preview (as orbs) and corresponding color codes
-- Real-time color extraction while browsing
+- **Automatic Color Detection:** Extracts all unique colors from webpage elements including backgrounds and borders
+- **Visual Color Palette:** Displays colors as elegant circular swatches with their corresponding RGB codes
+- **One-Click Copy:** Simply click any color to copy its code to your clipboard
+- **Smart Color Sorting:** Colors are organized by hue for intuitive browsing (ROY G BIV order)
+- **Real-Time Extraction:** Colors update automatically when you navigate to new pages
+- **Clean Interface:** Minimalist design that focuses on the colors themselves
 
-## Installation
+## How to Use
 
-1. Clone this repository
-2. Open Chrome and navigate to `chrome://extensions/`
-3. Enable "Developer mode" in the top right corner
-4. Click "Load unpacked" and select the extension directory
+1. Click the Orbi icon in your Chrome toolbar
+2. View the extracted color palette in the popup window
+3. Click any color to copy its RGB code
+4. See "Copied!" confirmation when successful
 
-## Usage
-
-1. Click on the extension icon in your Chrome toolbar
-2. The popup will display a palette of colors found on the current page
-3. Each color is shown as a circular preview with its corresponding color code
+## Technical Architecture
+- Content Script: Scans DOM elements and extracts computed styles
+- Background Service Worker: Manages data flow between content and popup
+- Popup UI: Displays interactive color palette with smooth animations
 
 ## Project Structure
-
 ```
-chrome-extension/
-├── manifest.json
-├── popup.html
-├── popup.js
-├── content.js
-├── background.js
-└── style.css
+├── manifest.json      # Extension configuration
+├── popup.html         # Popup interface structure
+├── popup.js           # Popup logic and interactions
+├── content.js         # DOM color extraction
+├── background.js      # Message broker
+├── style.css          # UI styling
+└── images/            # Extension icons
+    ├── icon-16.png
+    ├── icon-32.png
+    ├── icon-48.png
+    └── icon-128.png
 ```
-
-## Technical Details
-
-- Uses Chrome's Scripting API for content script injection
-- Implements message passing between content scripts and background scripts
-- Features a responsive popup UI with flexbox layout
-- Handles color extraction and display in real-time
-
-## Development
-
-To modify or enhance the extension:
-
-1. Make changes to the relevant files
-2. Reload the extension in `chrome://extensions/`
-3. Test changes on various websites
 
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## License
+**Development Guidelines**
 
+- Maintain the existing code style
+- Add comments for complex logic
+- Test on multiple websites before submitting
+- Update documentation as needed
+
+## Roadmap
+
+- [ ] Add hex and HSL color format support
+- [ ] Export palette to various formats (CSS, JSON, Adobe Swatch)
+- [ ] Color grouping and duplicate detection
+- [ ] Custom color naming
+- [ ] Dark mode support
+
+## License
+MIT License
+
+## Author
+Created with ❤️ by abrooks11
