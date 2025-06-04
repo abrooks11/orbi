@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Orbi",
   "description": "An extension to display the color palette of the active tab. Easily extract and view color codes from any webpage.",
-  "version": "1.0",
+  "version": "0.0.1",
   "author": "abrooks11",
   "icons": {
     "16": "images/icon-16.png",
@@ -24,6 +24,14 @@
     "service_worker": "background.js",
     "type": "module"
   },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["content-style.css"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
   "permissions": [
     "activeTab",
     "scripting",
