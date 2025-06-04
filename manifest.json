@@ -24,14 +24,6 @@
     "service_worker": "background.js",
     "type": "module"
   },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "css": ["content-style.css"],
-      "js": ["content.js"],
-      "run_at": "document_idle"
-    }
-  ],
   "permissions": [
     "activeTab",
     "scripting",
