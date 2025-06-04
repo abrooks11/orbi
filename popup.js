@@ -1,4 +1,4 @@
-// WHEN POPUP.HTML OPENS, RUN CONTENT.JS; INJECT WITH SCRIPTING API EXECUTESCRIPT
+// WHEN POPUP.HTML OPENS, INJECT AND RUN CONTENT SCRIPT PROGRAMMATICALLY
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const tabs = await chrome.tabs.query({ active: true, currentWindow: true });

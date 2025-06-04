@@ -35,16 +35,13 @@
   "permissions": [
     "activeTab",
     "scripting",
-    "storage",
-    "tabs",
     "clipboardWrite"
   ],
-  "host_permissions": ["<all_urls>"],
   "minimum_chrome_version": "88",
   "web_accessible_resources": [
     {
-      "resources": ["images/*"],
-      "matches": ["<all_urls>"]
+      "matches": ["<all_urls>"],
+      "resources": ["images/*"]
     }
   ]
 }
