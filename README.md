@@ -15,13 +15,13 @@ Orbi is a Chrome extension designed to instantly extract and visualize color pal
 ## Demo
 
 ### Automatic Full-Page Color Detection
-<img src="./images/demo/gif/orbi-initial-click.gif" alt="Orbi Demo" width="75%">
+<img src="./images/demo/gif/orbi-initial-click.gif" alt="Orbi Demo" width="100%">
 
-## One-Click Copy
-<img src="./images/demo/gif/orbi-copy.gif" alt="Orbi Demo" width="75%">
+### One-Click Copy
+<img src="./images/demo/gif/orbi-copy.gif" alt="Orbi Demo" width="100%">
 
-## Dynamic Layout
-<img src="./images/demo/gif/orbi-change-view.gif" alt="Orbi Demo" width="75%">
+### Dynamic Layout
+<img src="./images/demo/gif/orbi-change-view.gif" alt="Orbi Demo" width="100%">
 
 
 ## How to Use
